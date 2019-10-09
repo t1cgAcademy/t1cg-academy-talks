@@ -1,0 +1,18 @@
+<div>
+  <h1>Angular TODO App</h1>
+  <input type="text" placeholder="Add a TODO" [(ngModel)]="input" />
+  <button (click)="handleAdd()">Add TODO</button>
+  <div
+    *ngFor="let todo of todoList"
+    class="{{ todo.completed ? 'completed' : 'incomplete' }}"
+  >
+    <input
+      type="checkbox"
+      (change)="handleUpdate($event)"
+      id="{{ todo.id }}"
+      [checked]="todo.completed"
+    />
+    {{ todo.description }}
+    <button id="{{ todo.id }}" (click)="handleDelete($event)">X</button>
+  </div>
+</div>
